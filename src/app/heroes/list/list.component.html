@@ -1,0 +1,25 @@
+<h3>Listado de heroes</h3>
+<div *ngIf="deletedHero; else nothingWasDeleted">
+<h3>Heroe borrado<small class="text-danger"> {{ deletedHero }}</small></h3>
+</div>
+
+<ng-template #nothingWasDeleted> <!-- referencia local -->
+<h3>No ha borrado nada</h3>
+</ng-template>
+
+<button
+*ngIf="heroNames.length > 0"
+(click)= "removeLastHero()"
+class="btn btn-outline-danger">
+  Borrar ultimo heroe
+</button>
+
+<ul class="mt-2 list-group">
+  <li *ngFor="let name of heroNames"
+   class="list-group-item">{{name}}</li>
+
+</ul>
+
+<!-- Angular con el ngFor crea un elemento HTML con todas sus piezas internas -->
+<!-- Crea un template HTML, el cual repite basado en la cantidad de elementos que tenemos en el ciclo for-->
+<!-- ng template es un div que no existe -->
